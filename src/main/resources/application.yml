@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+
+auth:
+  expiration: 604800
+  secret: todoAPISecret1234
+  header: Authorization
