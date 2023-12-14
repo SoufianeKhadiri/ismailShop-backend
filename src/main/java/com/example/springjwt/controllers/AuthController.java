@@ -27,24 +27,30 @@ import java.util.List;
 @RequestMapping("/rest/auth")
 public class AuthController {
 
-      @Bean
+
+    public AuthController(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
+
+    @Bean
         private PasswordEncoder passwordEncoder(){
 
             return new BCryptPasswordEncoder();
 
         }
+
     private final AuthenticationManager authenticationManager;
 
-    @Autowired
+
     private CustomUserDetailsService customUserDetailsService;
 
     private JwtUtil jwtUtil;
 
-    public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
+   /* public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
 
-    }
+    }*/
 
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
