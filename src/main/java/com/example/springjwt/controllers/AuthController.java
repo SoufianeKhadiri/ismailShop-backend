@@ -8,6 +8,7 @@ import com.example.springjwt.model.response.LoginRes;
 import com.example.springjwt.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,24 +28,20 @@ import java.util.List;
 @RequestMapping("/rest/auth")
 public class AuthController {
 
+    @Autowired
+    @Lazy
+    private final AuthenticationManager authenticationManager;
+
+
+    @Autowired
+    private CustomUserDetailsService customUserDetailsService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     public AuthController(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
-
-    @Bean
-        private PasswordEncoder passwordEncoder(){
-
-            return new BCryptPasswordEncoder();
-
-        }
-
-    private final AuthenticationManager authenticationManager;
-
-
-    private CustomUserDetailsService customUserDetailsService;
-
-    private JwtUtil jwtUtil;
 
    /* public AuthController(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
         this.authenticationManager = authenticationManager;

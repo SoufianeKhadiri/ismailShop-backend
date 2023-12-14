@@ -21,11 +21,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig   {
 
 
-
+    @Autowired
     private final CustomUserDetailsService userDetailsService;
+    @Autowired
     private final JwtAuthorizationFilter jwtAuthorizationFilter;
 
-    @Autowired
+
     public SecurityConfig(CustomUserDetailsService customUserDetailsService, JwtAuthorizationFilter jwtAuthorizationFilter) {
 
 
@@ -58,7 +59,7 @@ public class SecurityConfig   {
     }
 
 
-    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+    @Bean
     public AuthenticationManager authenticationManagerBean(HttpSecurity http, PasswordEncoder PasswordEncoder) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(PasswordEncoder);
