@@ -48,7 +48,7 @@ public class AuthController {
         this.jwtUtil = jwtUtil;
 
     }*/
-
+    @CrossOrigin(origins = "http://localhost:19006") // Specific to this endpoint
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity login(@RequestBody LoginReq loginReq) {
