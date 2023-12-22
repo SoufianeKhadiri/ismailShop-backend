@@ -18,14 +18,14 @@ public class TshirtController {
     @Autowired
     private TshirtService tshirtService;
 
-
+    @CrossOrigin(origins = "http://localhost:19006") // Specific to this endpoint
     @ResponseBody
     @RequestMapping(value = "",method = RequestMethod.GET)
     public List<Tshirt> getAllProducts() {
         return tshirtService.getAllProducts();
 
     }
-
+    @CrossOrigin(origins = "http://localhost:19006") // Specific to this endpoint
     @ResponseBody
     @RequestMapping(value = "{id}",method = RequestMethod.GET)
     public Optional<Tshirt> getProductById(@PathVariable int id) {
