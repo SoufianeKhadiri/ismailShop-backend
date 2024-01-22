@@ -12,6 +12,17 @@ public class Tshirt  {
     private String brand;
     private String price;
     private String size;
+
+    private String category;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @ElementCollection
     private List<String> fotos;
 
@@ -76,10 +87,11 @@ public class Tshirt  {
     public Tshirt() {
     }
 
-    public Tshirt(String name, String brand, String price, String size, List<String> fotos, String description) {
+    public Tshirt(String name, String brand, String price, String size, List<String> fotos, String description , String category) {
         this.name = name;
         this.brand = brand;
         this.price = price;
+        this.category = category;
         this.size = size;
          this.fotos = fotos;
         this.description = description;
