@@ -20,7 +20,7 @@ public class TshirtController {
 
     @CrossOrigin(origins = "http://localhost:19006") // Specific to this endpoint
     @ResponseBody
-    @RequestMapping(value = "public/tshirts",method = RequestMethod.GET) /rest/public/
+    @RequestMapping(value = "public/tshirts",method = RequestMethod.GET)
     public List<Tshirt> getAllProducts() {
         return tshirtService.getAllProducts();
 
