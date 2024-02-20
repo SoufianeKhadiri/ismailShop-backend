@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/rest/api/tshirts")
+@RequestMapping("/rest/")
 public class TshirtController {
 
     @Autowired
@@ -20,27 +20,27 @@ public class TshirtController {
 
     @CrossOrigin(origins = "http://localhost:19006") // Specific to this endpoint
     @ResponseBody
-    @RequestMapping(value = "",method = RequestMethod.GET)
+    @RequestMapping(value = "public/tshirts",method = RequestMethod.GET) /rest/public/
     public List<Tshirt> getAllProducts() {
         return tshirtService.getAllProducts();
 
     }
     @CrossOrigin(origins = "http://localhost:19006") // Specific to this endpoint
     @ResponseBody
-    @RequestMapping(value = "{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "api/tshirts/{id}",method = RequestMethod.GET)
     public Optional<Tshirt> getProductById(@PathVariable int id) {
         return tshirtService.getProductById(id);
     }
 
     @ResponseBody
-    @RequestMapping(value = "",method = RequestMethod.POST)
+    @RequestMapping(value = "api/tshirts",method = RequestMethod.POST)
     public ResponseEntity<Tshirt> createProduct(@RequestBody Tshirt tshirt) {
         Tshirt createdTshirt = tshirtService.createProduct(tshirt);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTshirt);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "api/tshirts/{id}",method = RequestMethod.DELETE)
     public void deleteProduct(@PathVariable int id) {
         tshirtService.deleteProduct(id);
     }
