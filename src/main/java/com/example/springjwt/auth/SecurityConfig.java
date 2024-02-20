@@ -49,7 +49,7 @@ public class SecurityConfig   {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .requestMatchers("/rest/auth/**").permitAll()
+                .requestMatchers("/rest/auth/**" , "/rest/public/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
